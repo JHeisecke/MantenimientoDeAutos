@@ -22,10 +22,6 @@ class Contacto():
     def set_tel(self, tel=''):
         self.tel = tel
 
-    def add_email(self, email):
-        '''Permite anhadir una direccion de correo sin eliminar las demas'''
-        self.emails.append(email)
-
     def mostrar_datos(self):
         '''Permite mostrar los valores de los contactos'''
         print("\t---Detalle Contacto---")
@@ -38,7 +34,7 @@ class Contacto():
         instanciar al objeto"""
         return dict({
             "tel": input_entero("Tel."),
-            "email": input_string("Ingrese email")})
+            "email": input_string_norequerido("Ingrese email")})
     prompt_init = staticmethod(prompt_init)
 
 #_____________________________________________________________________________

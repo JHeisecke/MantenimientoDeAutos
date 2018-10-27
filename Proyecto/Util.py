@@ -17,7 +17,7 @@ def input_opcion(text, opciones):
     return val.lower()
 
 def input_entero(text):
-    """ Solicita un valor entero y lo devuelve. (es requerido)
+    """ Solicita un valor entero y lo devuelve.
         Mientras el valor ingresado no sea entero, vuelve a solicitarlo. """
     while True:
         valor = input("{}: ".format(text))
@@ -36,6 +36,15 @@ def input_string(text):
             return valor
         except ValueError:
             print('ERROR no se acepta vacio')
+
+def input_string_norequerido(text):
+    """Solicita una cadena para los casos donde no es requerida una repuesta"""
+    while True:
+        valor = input("{}: ".format(text))
+        try:
+            return valor
+        except ValueError:
+            pass
             
 
 def input_range(text, men, may):

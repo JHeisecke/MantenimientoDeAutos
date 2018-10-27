@@ -10,8 +10,10 @@ class LocalDeMantenimiento():
     """Clase que contiene todos los menus y las funciones para modificar
     los datos del LocalDeMantenimiento"""
 
-    def __init__(self, clientes=[], asesores=[], solicitudes_pendientes=[], solicitudes_atendidas=[]):
-        pass
+    def __init__(self, clientes=[], asesores=[], repuestos=[]):
+        self.clientes=clientes
+        self.asesores=asesores
+        self.repuestos=repuestos
 
 #________________________________Menu___Asesores______________________________
     def add_asesor(self):
@@ -93,7 +95,7 @@ class LocalDeMantenimiento():
             for key in list(self.opciones.keys()):
                 print(("{} - {}".format(key, self.opciones[key]["clave"])))
             print()
-            opcion = input_range("Ingrese una opcion", 1, 3)
+            opcion = input_range("Ingrese una opcion", 1, len(self.opciones))
             if opcion=='':
                 menu_principal()
             else:
@@ -158,54 +160,66 @@ class LocalDeMantenimiento():
         Gestionador.cargar_datos()
         # bd.clientes.append(Cliente(ruc='', cedula=4500000, nombre="Juan",
         # apellido="Frans", direccion='San Lorenzo'))
-        # bd.clientes[0].contactos = Contacto(tel='021 678678', cel='098765432',
+        # bd.clientes[0].contactos = Contacto(tel='021 678678',
         # email='juan_f@hotmail.com')
 
         # bd.clientes.append(Cliente(ruc='', cedula=1678789, nombre="Juani",
         # apellido="Maidana", direccion='Luque'))
-        # bd.clientes[1].contactos = Contacto(tel='021 545454', cel='0987121212',
+        # bd.clientes[1].contactos = Contacto(tel='021 545454',
         # email=('juani_@gmail.com'))
 
         # bd.clientes.append(Cliente(ruc='111111111-1', cedula=2345678,
         # nombre="Carlos", apellido="Enrique", direccion='San Lorenzo'))
+        # bd.clientes[2].contactos = Contacto(tel='021 254652')
 
         # bd.clientes.append(Cliente(ruc='222222222-2', cedula=954789,
         # nombre="Arnaldo", apellido="Perez", direccion='Asuncion'))
-        # bd.clientes[3].contactos = Contacto(tel='021 434343', cel='0984123123',
+        # bd.clientes[3].contactos = Contacto(tel='021 434343',
         # email='Arnaldo@gmail.com')
 
         # bd.clientes.append(Cliente(ruc='', cedula=4555555,
         # nombre="Mati", apellido="Kun", direccion='San Lorenzo'))
+        # bd.clientes[4].contactos = Contacto(tel='09349846',
+        # email=('matipolo@gmail.com'))
 
         # bd.clientes.append(Cliente(ruc='', cedula=4567890,
         # nombre="Romina", apellido="Rejala", direccion=''))
-
+        # bd.clientes[5].contactos = Contacto(tel='021 8467412',
+        # email=('rom@gmail.com'))
 
         # bd.asesores.append(Asesor(fecha_ini='', sueldo=2000000,
         # cedula=2912456, nombre="Lucia", apellido="Perez",
         # direccion='Asuncion'))
-        # bd.asesores[0].contactos = Contacto(tel='021 434343', cel='0984123123',
+        # bd.asesores[0].contactos = Contacto(tel='0984123123',
         # email='Lucia@gmail.com')
 
         # bd.asesores.append(Asesor(fecha_ini='', sueldo=1500000,
         # cedula=2944456, nombre="Junior", apellido="Aguero",
         # direccion='San Lorenzo'))
+        # bd.asesores[1].contactos = Contacto(tel='0983459844',
+        # email=('junior@gmail.com'))
 
         # bd.asesores.append(Asesor(fecha_ini='', sueldo=3000000,
         # cedula=3912456, nombre="David", apellido="Guerrero",
         # direccion='San Lorenzo, casa: 90'))
+        # bd.asesores[2].contactos = Contacto(tel='021 545454',
+        # email=('juani_@gmail.com'))
 
         # bd.asesores.append(Asesor(fecha_ini='', sueldo=1500000,
         # cedula=2919956, nombre="Dani", apellido="Perez",
         # direccion='San Lorenzo'))
-        # bd.asesores[3].contactos = Contacto(tel='021 434343', cel='0984123123',
+        # bd.asesores[3].contactos = Contacto(tel='0984123123',
         # email='Dani@gmail.com')
 
         # bd.asesores.append(Asesor(fecha_ini='', sueldo=1500000,
         # cedula=2915436, nombre="Julia", apellido="Espinoza",
         # direccion='San Lorenzo'))
+        # bd.asesores[4].contactos = Contacto(tel='0981123456',
+        # email=('juli@gmail.com'))
 
         # bd.asesores.append(Asesor(fecha_ini='', sueldo=6000000,
         # cedula=1912456, nombre="Pedro", apellido="Pedrinho",
         # direccion='Asuncion'))
+        # bd.asesores[5].contactos = Contacto(tel='0975486941',
+        # email=('pedrito@gmail.com'))
 

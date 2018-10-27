@@ -52,7 +52,7 @@ class Persona(metaclass=ABCMeta):
 class Cliente(Persona):
     '''Clase extendida de Persona que detalla el ruc del cliente'''
 
-    def __init__(self, ruc='No tiene', **kwargs):
+    def __init__(self, ruc='N/A', **kwargs):
         super().__init__(**kwargs)
         self.ruc = ruc
 
@@ -72,7 +72,7 @@ class Cliente(Persona):
         """Se crea un diccionario con las claves y valores necesarios para
         instanciar al objeto"""
         persona = Persona.prompt_init()
-        ruc = input_string("RUC")
+        ruc = input_string_norequerido("RUC")
         datos = Contacto.prompt_init()
         contacto = Contacto(**datos)
         persona.update({
