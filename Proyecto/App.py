@@ -1,5 +1,4 @@
-from datetime import timedelta, datetime
-from LocalDeMantenimiento import *
+from local_mantenimiento import *
 
 
 main = LocalDeMantenimiento()

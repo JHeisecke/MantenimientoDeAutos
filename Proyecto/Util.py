@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 #________________________________Util__________________________________________
 #Validadores para distintos casos y necesidades

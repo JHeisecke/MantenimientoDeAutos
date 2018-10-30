@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Util import *
+from util import *
 
 #________________________________CONTACTO______________________________________#
 
@@ -7,7 +7,7 @@ from Util import *
 class Contacto():
     '''Clase que contiene los contactos de las personas'''
 
-    def __init__(self, tel='', email=''):
+    def __init__(self, tel='', email='N/A'):
         super(Contacto, self).__init__()
         self.tel = tel
         self.emails = []

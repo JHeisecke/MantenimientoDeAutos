@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from abc import ABCMeta, abstractmethod
-from Contacto import *
-from Util import *
+from contacto import *
+from util import *
 from datetime import datetime
 
 #________________________________PERSONA_______________________________________
@@ -38,9 +38,6 @@ class Persona(metaclass=ABCMeta):
             apellido=input_string('Ingrese apellido').title(),
             direccion=input_string('Ingrese direccion'))
     prompt_init = staticmethod(prompt_init)
-
-    def add_contactos(self, tel='', email=''):
-        self.contactos = Contacto(tel, email)
 
     @abstractmethod
     def abs():
