@@ -17,7 +17,6 @@ class Empresa(metaclass=ABCMeta):
 class LocalDeMantenimiento(Empresa):
     """Clase que contiene todos los menus y las funciones para modificar
     los datos del LocalDeMantenimiento"""
-
     def __init__(self, clientes=[], asesores=[], repuestos=[]):
         self.clientes=clientes
         self.asesores=asesores

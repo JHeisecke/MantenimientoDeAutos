@@ -18,17 +18,9 @@ class Persona(metaclass=ABCMeta):
         self.direccion = direccion
         self.contactos = contacto
 
+    @abstractmethod
     def mostrar_datos(self):
-        print("\nDetalles Persona")
-        print("================")
-        print(("Cedula: {}".format(self.cedula)))
-        print(("Nombre: {}".format(self.nombre)))
-        print(("Apellido: {}".format(self.apellido)))
-        print(("Direccion: {}".format(self.direccion)))
-        if (self.contactos is not None):
-            self.contactos.mostrar_datos()
-        else:
-            print("--No posee contactos--")
+        pass
 
     def prompt_init():
         """Se crea un diccionario con los claves y valores necesarios para
@@ -39,9 +31,6 @@ class Persona(metaclass=ABCMeta):
             direccion=input_string('Ingrese direccion'))
     prompt_init = staticmethod(prompt_init)
 
-    @abstractmethod
-    def abs():
-        pass
 
 
 #_____________________________CLIENTE_______________________________________
@@ -56,14 +45,17 @@ class Cliente(Persona):
     def get_ruc(self):
         return self.ruc
 
-    def mostrar(self):
+    def mostrar_datos(self):
         '''Sobreescribimos un metodo heredado'''
-        super().mostrar_datos()
+        print("\nDetalles Persona")
+        print("================")
+        print(("Cedula: {}".format(self.cedula)))
+        print(("Nombre: {}".format(self.nombre)))
+        print(("Apellido: {}".format(self.apellido)))
+        print(("Direccion: {}".format(self.direccion)))
         print(("RUC: {}".format(self.ruc)))
         print()
-
-    def abs():
-        pass
+        self.contactos.mostrar_datos()
 
     def prompt_init():
         """Se crea un diccionario con las claves y valores necesarios para
@@ -96,16 +88,18 @@ class Asesor(Persona):
     def get_sueldo(self):
         return self.sueldo
 
-    def mostrar(self):
+    def mostrar_datos(self):
         '''Sobreescribimos un metodo heredado'''
-        super().mostrar_datos()
+        print("\nDetalles Persona")
+        print("================")
+        print(("Cedula: {}".format(self.cedula)))
+        print(("Nombre: {}".format(self.nombre)))
+        print(("Apellido: {}".format(self.apellido)))
+        print(("Direccion: {}".format(self.direccion)))
         print(("Fecha de inicio: {}".format(self.fecha_ini)))
         print(("Sueldo: {}".format(self.sueldo)))
         print()
-
-    def abs():
-        pass
-
+        self.contactos.mostrar_datos()
 
     def prompt_init():
         """Se crea un diccionario con las claves y valores necesarios para
