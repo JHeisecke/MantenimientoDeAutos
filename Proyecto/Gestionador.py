@@ -22,7 +22,7 @@ def cargar_lista(clave, nombreArchivo):
         return lista
 
     except KeyError:
-        return []
+        return print("ERROR Ocurrio un al encontrar los datos")
 
 def guardar_lista(objeto,nombreArchivo, clave):
     ''' funcion que sirve para guardar los datos en basededatos'''
@@ -30,7 +30,7 @@ def guardar_lista(objeto,nombreArchivo, clave):
         basededatos = shelve.open(nombreArchivo,'n')
         basededatos[clave] = objeto
     except FileNotFoundError:
-        print("Archivo no existe")
+        print("ERROR Archivo no existe")
 
     else:
         basededatos.close()

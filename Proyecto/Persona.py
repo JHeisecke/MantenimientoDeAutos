@@ -42,9 +42,6 @@ class Cliente(Persona):
         super().__init__(**kwargs)
         self.ruc = ruc
 
-    def get_ruc(self):
-        return self.ruc
-
     def mostrar_datos(self):
         '''Sobreescribimos un metodo heredado'''
         print("\nDetalles Persona")
@@ -82,12 +79,6 @@ class Asesor(Persona):
         self.fecha_ini = fecha_ini
         self.sueldo = sueldo
 
-    def get_fecha_ini(self):
-        return self.fecha_ini
-
-    def get_sueldo(self):
-        return self.sueldo
-
     def mostrar_datos(self):
         '''Sobreescribimos un metodo heredado'''
         print("\nDetalles Persona")
@@ -117,15 +108,3 @@ class Asesor(Persona):
         return persona
     prompt_init = staticmethod(prompt_init)
 #______________________________________________________________________________
-
-
-
-
-
-
-
-# x[0] = Cliente(asfsdf)
-# x[1] = Asesor(asdfasfja)
-
-# for x in xrange(1,10):
-#     x.prompt_init

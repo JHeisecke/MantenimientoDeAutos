@@ -31,9 +31,11 @@ class LocalDeMantenimiento(Empresa):
         gestionador.guardar_datos()
         
     def del_asesor(self):
+        """Se encarga de borrar el asesor seleccionado"""
         self.del_datos(bd.asesores)
 
     def listar_asesor(self):
+        """Se encarga de listar los asesores"""
         self.listar_datos(bd.asesores)
 
 #________________________________Menu___Cliente________________________________
@@ -45,9 +47,11 @@ class LocalDeMantenimiento(Empresa):
         gestionador.guardar_datos()
 
     def del_cliente(self):
+        """Se encarga de borrar el cliente seleccionado"""
         self.del_datos(bd.clientes)
 
     def listar_cliente(self):
+        """Se encarga de listar los clientes"""
         self.listar_datos(bd.clientes)
 
 #______________________________________________________________________________
@@ -67,8 +71,8 @@ class LocalDeMantenimiento(Empresa):
                         print("Eliminado.")
                     else:
                         print("Cancelado.")
-                except:
-                    print("Valor incorrecto.")
+                except ValueError:
+                    print("ERROR valor incorrecto")
             else:
                 print("Cancelado.")
         else:
@@ -93,6 +97,13 @@ class LocalDeMantenimiento(Empresa):
 
 #______________________________________________________________________________
 #___________________________________MENUS______________________________________
+
+    def fin(self):
+        """Funcion que guarda los datos agregados, imprime una despedida y cierra el programa"""
+        gestionador.guardar_datos()
+        print("\n\n----------Todos los datos fueron guardados----------------")
+        print("\n-----------------------Adios!-----------------------------")
+        exit()
 
     def menu_principal(self):
         """Menu principal del programa"""
@@ -162,6 +173,8 @@ class LocalDeMantenimiento(Empresa):
 
     o_repuestos = {}
     o_repuestos[1] = {"clave": "Volver al menu principal", "funcion": menu_principal}
+    #o_repuestos[2] = {"clave": "Agregar repuesto", "funcion": }
+    o_repuestos[2] = {"clave": "Salie", "funcion": fin}
 #______________________________________________________________________________
 #______________________________________________________________________________
 #______________________________________________________________________________
@@ -233,4 +246,3 @@ class LocalDeMantenimiento(Empresa):
         direccion='Asuncion'))
         bd.asesores[5].contactos = Contacto(tel='0975486941',
         email='pedrito@gmail.com')
-
