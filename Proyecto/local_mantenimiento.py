@@ -60,7 +60,7 @@ class LocalDeMantenimiento(Empresa):
             pos = input_entero("Ingrese la posicion del dato a eliminar")
             if pos is not None:
                 try:
-                    lista[pos - 1].mostrar()
+                    lista[pos - 1].mostrar_datos()
                     resp = input_opcion("Desea eliminar el dato de arriba",
                     ("s", "n"))
                     if resp == "s":
@@ -84,7 +84,7 @@ class LocalDeMantenimiento(Empresa):
             print()
             for val in lista:
                 print(("-----------------=={}==-----------------".format(numero)))
-                val.mostrar()
+                val.mostrar_datos()
                 print()
                 numero += 1
             if p:
@@ -178,7 +178,7 @@ class LocalDeMantenimiento(Empresa):
         bd.clientes.append(Cliente(ruc='', cedula=1678789, nombre="Juani",
         apellido="Maidana", direccion='Luque'))
         bd.clientes[1].contactos = Contacto(tel='021 545454',
-        email=('juani_@gmail.com'))
+        email='juani_@gmail.com')
 
         bd.clientes.append(Cliente(ruc='111111111-1', cedula=2345678,
         nombre="Carlos", apellido="Enrique", direccion='San Lorenzo'))
@@ -192,12 +192,12 @@ class LocalDeMantenimiento(Empresa):
         bd.clientes.append(Cliente(ruc='', cedula=4555555,
         nombre="Mati", apellido="Kun", direccion='San Lorenzo'))
         bd.clientes[4].contactos = Contacto(tel='09349846',
-        email=('matipolo@gmail.com'))
+        email='matipolo@gmail.com')
 
         bd.clientes.append(Cliente(ruc='', cedula=4567890,
         nombre="Romina", apellido="Rejala", direccion=''))
         bd.clientes[5].contactos = Contacto(tel='021 8467412',
-        email=('rom@gmail.com'))
+        email='rom@gmail.com')
 
         bd.asesores.append(Asesor(fecha_ini='', sueldo=2000000,
         cedula=2912456, nombre="Lucia", apellido="Perez",
@@ -209,13 +209,13 @@ class LocalDeMantenimiento(Empresa):
         cedula=2944456, nombre="Junior", apellido="Aguero",
         direccion='San Lorenzo'))
         bd.asesores[1].contactos = Contacto(tel='0983459844',
-        email=('junior@gmail.com'))
+        email='junior@gmail.com')
 
         bd.asesores.append(Asesor(fecha_ini='', sueldo=3000000,
         cedula=3912456, nombre="David", apellido="Guerrero",
         direccion='San Lorenzo, casa: 90'))
         bd.asesores[2].contactos = Contacto(tel='021 545454',
-        email=('juani_@gmail.com'))
+        email='juani_@gmail.com')
 
         bd.asesores.append(Asesor(fecha_ini='', sueldo=1500000,
         cedula=2919956, nombre="Dani", apellido="Perez",
@@ -227,11 +227,11 @@ class LocalDeMantenimiento(Empresa):
         cedula=2915436, nombre="Julia", apellido="Espinoza",
         direccion='San Lorenzo'))
         bd.asesores[4].contactos = Contacto(tel='0981123456',
-        email=('juli@gmail.com'))
+        email='juli@gmail.com')
 
         bd.asesores.append(Asesor(fecha_ini='', sueldo=6000000,
         cedula=1912456, nombre="Pedro", apellido="Pedrinho",
         direccion='Asuncion'))
         bd.asesores[5].contactos = Contacto(tel='0975486941',
-        email=('pedrito@gmail.com'))
+        email='pedrito@gmail.com')
 

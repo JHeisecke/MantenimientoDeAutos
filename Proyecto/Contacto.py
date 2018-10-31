@@ -10,24 +10,13 @@ class Contacto():
     def __init__(self, tel='', email='N/A'):
         super(Contacto, self).__init__()
         self.tel = tel
-        self.emails = []
-        self.emails.append(email)
-
-    def get_tel(self):
-        return self.tel
-
-    def get_email(self):
-        return self.emails
-
-    def set_tel(self, tel=''):
-        self.tel = tel
+        self.email = email
 
     def mostrar_datos(self):
         '''Permite mostrar los valores de los contactos'''
         print("\t---Detalle Contacto---")
         print("\tTel.: {}".format(self.tel))
-        for mail in self.emails:
-            print("\tEmail: {}".format(mail))
+        print("\tEmail: {}".format(self.email))
 
     def prompt_init():
         """Se crea un diccionario con las claves y valores necesarios para

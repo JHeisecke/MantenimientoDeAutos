@@ -9,11 +9,12 @@ def cls():
 
 def input_opcion(text, opciones):
     """ Solicita un valor que debe estar presente en la lista opciones (no es requerido)"""
-    text += " ({})*: ".format(", ".join(opciones))
-    val = input(text)
-    while val.lower() not in opciones:
-        val = input(text)
-    return val.lower()
+    text += " [{}]*: ".format("/".join(opciones)) #opciones es un tuple con s y n
+    valor = input(text)
+    while valor.lower() not in opciones:
+        valor = input(text)
+    return valor.lower()
+
 
 def input_entero(text):
     """ Solicita un valor entero y lo devuelve.
@@ -32,7 +33,10 @@ def input_string(text):
     while True:
         valor = input("{}: ".format(text))
         try:
-            return valor
+            if valor is not '':
+                return valor
+            else:
+                raise (ValueError)
         except ValueError:
             print('ERROR no se acepta vacio')
 
