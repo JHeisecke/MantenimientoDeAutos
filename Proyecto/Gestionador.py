@@ -5,13 +5,14 @@ def cargar_datos():
     '''carga los datos en listas para su uso'''
     bd.clientes = cargar_lista("clientes", "Clientes")
     bd.asesores = cargar_lista("asesores", "Asesores")
-
+    bd.solicitudes = cargar_lista("solicitudes", "Solicitudes")
 
 def guardar_datos():
     '''guarda los datos en las listas en archivos para la persistencia'''
     guardar_lista(bd.clientes,"Clientes", "clientes")
     guardar_lista(bd.asesores,"Asesores", "asesores")
-
+    guardar_lista(bd.solicitudes,"Solicitudes", "solicitudes")
+    
 # ---------------------------------------------------------------------------
 def cargar_lista(clave, nombreArchivo):
     '''carga los datos al sistema cuando se este ejecutando'''

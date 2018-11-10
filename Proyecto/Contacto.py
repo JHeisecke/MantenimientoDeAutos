@@ -12,12 +12,6 @@ class Contacto():
         self.tel = tel
         self.email = email
 
-    def mostrar_datos(self):
-        '''Permite mostrar los valores de los contactos'''
-        print("\t---Detalle Contacto---")
-        print("\tTel.: {}".format(self.tel))
-        print("\tEmail: {}".format(self.email))
-
     def prompt_init():
         """Se crea un diccionario con las claves y valores necesarios para
         instanciar al objeto"""

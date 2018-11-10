@@ -1,2 +1,3 @@
 clientes = []
 asesores = []
+solicitudes = []

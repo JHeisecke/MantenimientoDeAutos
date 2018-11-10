@@ -18,10 +18,6 @@ class Persona(metaclass=ABCMeta):
         self.direccion = direccion
         self.contactos = contacto
 
-    @abstractmethod
-    def mostrar_datos(self):
-        pass
-
     def prompt_init():
         """Se crea un diccionario con los claves y valores necesarios para
         instanciar al objeto"""
@@ -41,18 +37,6 @@ class Cliente(Persona):
     def __init__(self, ruc='N/A', **kwargs):
         super().__init__(**kwargs)
         self.ruc = ruc
-
-    def mostrar_datos(self):
-        '''Sobreescribimos un metodo heredado'''
-        print("\nDetalles Persona")
-        print("================")
-        print(("Cedula: {}".format(self.cedula)))
-        print(("Nombre: {}".format(self.nombre)))
-        print(("Apellido: {}".format(self.apellido)))
-        print(("Direccion: {}".format(self.direccion)))
-        print(("RUC: {}".format(self.ruc)))
-        print()
-        self.contactos.mostrar_datos()
 
     def prompt_init():
         """Se crea un diccionario con las claves y valores necesarios para
@@ -79,24 +63,11 @@ class Asesor(Persona):
         self.fecha_ini = fecha_ini
         self.sueldo = sueldo
 
-    def mostrar_datos(self):
-        '''Sobreescribimos un metodo heredado'''
-        print("\nDetalles Persona")
-        print("================")
-        print(("Cedula: {}".format(self.cedula)))
-        print(("Nombre: {}".format(self.nombre)))
-        print(("Apellido: {}".format(self.apellido)))
-        print(("Direccion: {}".format(self.direccion)))
-        print(("Fecha de inicio: {}".format(self.fecha_ini)))
-        print(("Sueldo: {}".format(self.sueldo)))
-        print()
-        self.contactos.mostrar_datos()
 
     def prompt_init():
         """Se crea un diccionario con las claves y valores necesarios para
         instanciar al objeto"""
         persona = Persona.prompt_init()
-        print("La fecha de inicio es igual a la fecha actual")
         fecha_ini = datetime.now()
         sueldo = input_entero("Ingrese sueldo")
         datos = Contacto.prompt_init()

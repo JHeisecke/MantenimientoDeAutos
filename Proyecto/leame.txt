@@ -1,0 +1,2 @@
+Para ejecutar el programa hay que dirigirse donde se encuentre el archivo app.py desde una consola 
+e introducir el siguiente comando: Python app.py
