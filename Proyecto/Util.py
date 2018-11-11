@@ -25,7 +25,7 @@ def input_opcion_repuesto(text, opciones):
     valor = input(text)
     while valor not in opciones:
         valor = input(text)
-    return valor	
+    return valor    
 
 def input_entero(text):
     """ Recibe un parametro: 'texto': que contiene un mensaje para el usuario

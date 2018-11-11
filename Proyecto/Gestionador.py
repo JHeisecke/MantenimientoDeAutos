@@ -12,6 +12,7 @@ def guardar_datos():
     guardar_lista(bd.clientes,"Clientes", "clientes")
     guardar_lista(bd.asesores,"Asesores", "asesores")
     guardar_lista(bd.solicitudes,"Solicitudes", "solicitudes")
+
     
 # ---------------------------------------------------------------------------
 def cargar_lista(clave, nombreArchivo):
@@ -19,6 +20,10 @@ def cargar_lista(clave, nombreArchivo):
     try:
         basededatos = shelve.open(nombreArchivo)
         lista = basededatos[clave]
+    
+        if lista is None:
+            lista = []
+
 
         return lista
 

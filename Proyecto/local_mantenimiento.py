@@ -130,8 +130,8 @@ class LocalDeMantenimiento(Empresa):
                 print()
                 print("\t---Detalle Vehiculo---")
                 print("\ttipo: {}".format(val.repuesto.tipo))
-                print("\tmarca: {}".format(val.vehiculo.marca))
-                print("\tcosto: {}".format(val.vehiculo.costo))
+                print("\tmarca: {}".format(val.repuesto.marca))
+                print("\tcosto: {}".format(val.repuesto.costo))
                 print()
                 numero += 1
             if p:
