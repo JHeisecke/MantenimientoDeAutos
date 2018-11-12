@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
 from util import *
+from abc import ABCMeta, abstractmethod
+
 #________________________________vehiculo_______________________________________
 
+class MedioDeTransporte(metaclass=ABCMeta): 
+	@abstractmethod
+	def __init__(self):
+		pass
 
-class Vehiculo():
+class Vehiculo(MedioDeTransporte):
     '''Clase que contiene a los vehiculos para hacer mantenimiento de una solicitud'''
 
     def __init__(self, tipo='', marca='', modelo='', chapa=''):

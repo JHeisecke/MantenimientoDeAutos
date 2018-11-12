@@ -17,13 +17,13 @@ class Boleta(metaclass=ABCMeta):
 class Solicitud(Boleta):
     """Clase donde se guardan los datos de la solicitud de mantenimiento
     ---Se almacenan los datos de los vehiculos"""
-    def __init__(self, fecha='' , cliente='', asesor='', vehiculo='', repuesto=''):
+    def __init__(self, fecha='' , cliente='', asesor='', vehiculo='', repuestos=''):
         super().__init__()
         self.fecha = fecha
         self.cliente = cliente
         self.asesor = asesor
         self.vehiculo=vehiculo
-        self.repuesto=repuesto
+        self.repuestos= []
 
     def promp_init():
         """Se crea un diccionario con los indices y valores necesarios para
@@ -34,12 +34,9 @@ class Solicitud(Boleta):
         asesor=input_entero("Ingrese la cedula del asesor*")
         datosV = Vehiculo.prompt_init()
         vehiculo= Vehiculo(**datosV)    
-        datosR = Repuesto.prompt_init()
-        repuesto = Repuesto(**datosR)
         return dict({
             "fecha": fecha,
             "cliente": cliente,
             "asesor": asesor,
-            "vehiculo": vehiculo,
-            "repuesto": repuesto
+            "vehiculo": vehiculo
         })
