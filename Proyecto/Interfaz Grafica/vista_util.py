@@ -69,7 +69,7 @@ def list_cliente():
 		datos.append("	 Contactos: ")
 		if cli.contactos:
 			datos.append("	 -----Tel: {}".format(cli.contactos.tel))
-			datos.append("	 -----Email: {}".format(cli.contactos.emails))
+			datos.append("	 -----Email: {}".format(cli.contactos.email))
 		datos.append("	 Ruc: {}".format(cli.ruc))
 		datos.append("")
 		datos.append("")
