@@ -53,6 +53,16 @@ class PanelPrincipal(Frame):
 		menu_asesor.add_command(label="Listar Asesor",
 			command=list_asesor)
 		menubar.add_cascade(label="Asesores", menu=menu_asesor)
+
+		menu_soli = Menu(menubar, tearoff=0)
+		menu_soli.add_command(label="Agregar Solicitud", command=self.add_soli)
+		menu_soli.add_command(label="Eliminar solicitud", command=self)
+		menu_soli.add_command(label="Listar solicitudes", command=self)
+		menu_soli.add_separator()
+		menu_soli.add_command(label="Dar de baja solicitud",
+			command=self)
+		menu_soli.add_command(label="Lista de solicitudes atendidas", command=self)
+		menubar.add_cascade(label="Solicitud", menu=menu_soli)
 		
 		menu_ayuda = Menu(menubar, tearoff=0)
 		menu_ayuda.add_separator()
@@ -99,6 +109,11 @@ class PanelPrincipal(Frame):
 	def del_asesor(self):
 		self.limpiar()
 		form = DelAsesor(self.__panel_master)
+		self.__vista_actual = form
+		
+	def add_soli(self):
+		self.limpiar()
+		form = AddSoli(self.__panel_master)
 		self.__vista_actual = form
 
 #____________________________CARGAR__DATOS_____________________________________
