@@ -23,7 +23,7 @@ class Solicitud(Boleta):
         self.cliente = cliente
         self.asesor = asesor
         self.vehiculo=vehiculo
-        self.repuestos= []
+        self.repuestos= repuestos
 
     def promp_init():
         """Se crea un diccionario con los indices y valores necesarios para

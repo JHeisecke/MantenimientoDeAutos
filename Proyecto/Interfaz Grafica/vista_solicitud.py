@@ -129,12 +129,12 @@ class AddSoli(PanedWindow):
 				else:
 					messagebox.showinfo("Informacion", "Debe ingresar los datos del vehiculo correctamente")
 				if self.validar_repuesto(tip, marcaR, cos):
-					repuesto = Repuesto(**{"tipo": tip, "marca": marcaR,"costo_m": cos})
+					repuesto = Repuesto(**{"tipo": tip, "marca": marcaR,"costo": cos})
 				else:
 					messagebox.showinfo("Informacion", "Debe ingresar los datos de repuestos correctamente")
 				solicitud = Solicitud(**{"fecha": datetime.now(),
 				"cliente": cli, "asesor": asesor, "vehiculo": vehiculo, "repuestos": repuesto})
-				solicitud.repuestos = self.repuestos
+				#solicitud.repuestos = self.repuestos
 				bd.solicitudes.append(solicitud)
 				#print("final de ingreso de datos")
 				messagebox.showinfo("Informacion", "Solicitud agregada")

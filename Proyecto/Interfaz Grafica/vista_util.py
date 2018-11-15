@@ -110,13 +110,11 @@ def list_soli():
 		datos.append("{}-Chapa: {}".format(ep, sol.vehiculo.chapa))
 		datos.append("{}-Marca: {}".format(ep, sol.vehiculo.marca))
 		datos.append("{}-Modelo: {}".format(ep, sol.vehiculo.modelo))
-		datos.append("{}-Repuestos:".format(ep))
+		datos.append("	 Repuestos:".format(ep))
 		if sol.repuestos:
-			for val in sol.repuestos:
-				datos.append("{}=Tipo: {}".format(ep1, val.tipo))
-				datos.append("{}=Marca: {}".format(ep1, val.marca))
-				datos.append("{}=Costo: {}".format(ep1, val.costo))
-				datos.append("")
+			datos.append("{}=Tipo: {}".format(ep, sol.repuestos.tipo))
+			datos.append("{}=Marca: {}".format(ep, sol.repuestos.marca))
+			datos.append("{}=Costo: {}".format(ep, sol.repuestos.costo))
 			datos.append("")
 
 		bucle += 1
