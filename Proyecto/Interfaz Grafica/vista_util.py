@@ -97,13 +97,13 @@ def list_asesor():
 		bucle += 1
 	list_datos(datos)
 	
-def list_soli():
+def list_soli(soli):
 	"""Genera una lista con los datos de las solicitudes"""
 	datos = ['------======DETALLE SOLICITUDES======------']
 	bucle = 1
 	ep = "				  "
 	ep1 = "									  "
-	for sol in bd.solicitudes:
+	for sol in soli:
 		datos.append("{}- Cliente: {}".format(bucle, sol.cliente))
 		datos.append("	 Asesor: {}".format(sol.asesor))
 		datos.append("	 Vehiculo: ")
@@ -116,7 +116,14 @@ def list_soli():
 			datos.append("{}=Marca: {}".format(ep, sol.repuestos.marca))
 			datos.append("{}=Costo: {}".format(ep, sol.repuestos.costo))
 			datos.append("")
-
+		datos.append("")
 		bucle += 1
 	list_datos(datos)
+	
+def list_bajas():
+    """Genera una lista con los datos de las solicitudes procesadas"""
+    list_soli(bd.solicitudes_baja)
 
+def list_nobajas():
+    """Genera una lista con los datos de las solicitudes no procesadas"""
+    list_soli(bd.solicitudes)

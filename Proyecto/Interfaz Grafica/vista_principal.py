@@ -8,7 +8,7 @@ from vista_asesor import *
 import gestionador
 
 
-bgC = "black"
+bgC = "grey"
 p_sal_pri = "700x400+150+100"
 p_sal_sec = "500x300+250+180"
 
@@ -56,12 +56,11 @@ class PanelPrincipal(Frame):
 
 		menu_soli = Menu(menubar, tearoff=0)
 		menu_soli.add_command(label="Agregar Solicitud", command=self.add_soli)
-		menu_soli.add_command(label="Eliminar solicitud", command=self)
-		menu_soli.add_command(label="Listar solicitudes", command=list_soli)
+		menu_soli.add_command(label="Listar Solicitudes", command=list_nobajas)
 		menu_soli.add_separator()
-		menu_soli.add_command(label="Dar de baja solicitud",
-			command=self)
-		menu_soli.add_command(label="Lista de solicitudes atendidas", command=self)
+		menu_soli.add_command(label="Dar de baja Solicitud",
+			command=self.baja_soli)
+		menu_soli.add_command(label="Lista de solicitudes atendidas", command=list_bajas)
 		menubar.add_cascade(label="Solicitud", menu=menu_soli)
 		
 		menu_ayuda = Menu(menubar, tearoff=0)
@@ -114,6 +113,11 @@ class PanelPrincipal(Frame):
 	def add_soli(self):
 		self.limpiar()
 		form = AddSoli(self.__panel_master)
+		self.__vista_actual = form
+		
+	def baja_soli(self):
+		self.limpiar()
+		form = VistaSoliBaja(self.__panel_master)
 		self.__vista_actual = form
 
 #____________________________CARGAR__DATOS_____________________________________

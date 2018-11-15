@@ -175,3 +175,58 @@ class AddSoli(PanedWindow):
 			messagebox.showinfo("", "Ingrese correctamente los datos del " +
 				"vehiculo")
 		return val
+		
+class VistaSoliBaja(PanedWindow):
+	"""Panel que contien los campos para procesar una solicitud"""
+	costo_general = 100000
+	soli_entry = None
+
+	def __init__(self, panel_master):
+		PanedWindow.__init__(self, master=panel_master)
+		self.__panel_master = panel_master
+		self.inicializar()
+		self.pack()
+
+	def inicializar(self):
+		Label(self, text="Ingrese datos requeridos", ).grid(row=1, column=2)
+		Label(self, text="Ingrese numero de solicitud a procesar*: ").grid(
+			row=2, column=1)
+		Button(self, text="Procesar", command=self.procesar).grid(
+			row=3, column=1)
+
+		self.get_soli_entry()
+
+	def get_soli_entry(self):
+		if not self.soli_entry:
+			self.soli_entry = Entry(master=self, width=20)
+			self.soli_entry.grid(row=2, column=2)
+		return self.soli_entry
+
+	def procesar(self):
+		"""Esta funcion da de baja una solicitud, almacena la solicitud en la lista de solicitudes_baja 
+		imprime en pantalla los datos del mantenimiento"""
+		try:
+			pos = int(self.get_soli_entry().get())
+			if(messagebox.askyesno("Procesar", "Desea atender la solicitud?")):
+				dato = bd.solicitudes.pop(pos - 1)
+				bd.solicitudes_baja.append(dato)
+				messagebox.showinfo("Informacion", "Solicitud Atendida")
+				self.calc(dato)
+		except:
+			messagebox.showerror("Infor", "No existe solicitud")
+
+	
+	def calc(self, dato):
+		"""Funcion que calcula los valores para procesar una solicitud"""
+		monto = self.generador(dato)
+		messagebox.showinfo("Resultado", "Cliente: " + dato.cliente +
+		"\Asesor: " + dato.asesor + "\nMonto total: " + str(monto))
+		self.destroy()
+
+
+	def generador(self, dato):
+		""" Se retorna el costo final del mantenimiento """
+		if dato.vehiculo:
+			if dato.repuestos:
+				costo_general+=dato.repuestos.costo
+		return costo_general
