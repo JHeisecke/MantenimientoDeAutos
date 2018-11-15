@@ -7,7 +7,7 @@ from contacto import *
 import gestionador
 
 
-class AddCliente(PanedWindow):
+class VistaClienteAgregado(PanedWindow):
     """Panel que contien los campos para introducir los datos de un cliente"""
 
     cedula_entry = None
@@ -124,7 +124,7 @@ class AddCliente(PanedWindow):
             messagebox.showerror('Error', e)
 
 
-class DelCliente(PanedWindow):
+class VistaClienteBorrado(PanedWindow):
     """Panel que contien los campos para eliminar un cliente"""
     soli_entry = None
 

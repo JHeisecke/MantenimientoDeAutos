@@ -9,7 +9,7 @@ from datetime import timedelta, datetime
 import gestionador
 from functools import reduce
 
-class AddSoli(PanedWindow):
+class VistaSolicitudAgregada(PanedWindow):
 	"Panel que contiene los campos para introducir los datos de la solicitud"
 
 	cliente_entry = None

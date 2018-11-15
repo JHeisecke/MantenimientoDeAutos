@@ -8,7 +8,7 @@ from datetime import datetime
 import gestionador
 
 
-class AddAsesor(PanedWindow):
+class VistaAsesorAgregado(PanedWindow):
 	"""Panel que contien los campos para introducir los datos de un asesor"""
 
 	cedula_entry = None
@@ -131,7 +131,7 @@ class AddAsesor(PanedWindow):
 			messagebox.showerror('Error', e)
 
 
-class DelAsesor(PanedWindow):
+class VistaAsesorBorrado(PanedWindow):
 	"""Panel que contien los campos para eliminar un Asesor"""
 	soli_entry = None
 

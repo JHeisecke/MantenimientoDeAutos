@@ -92,27 +92,27 @@ class PanelPrincipal(Frame):
 
 	def add_cliente(self):
 		self.limpiar()
-		form = AddCliente(self.__panel_master)
+		form = VistaClienteAgregado(self.__panel_master)
 		self.__vista_actual = form
 
 	def del_cliente(self):
 		self.limpiar()
-		form = DelCliente(self.__panel_master)
+		form = VistaClienteBorrado(self.__panel_master)
 		self.__vista_actual = form
 
 	def add_asesor(self):
 		self.limpiar()
-		form = AddAsesor(self.__panel_master)
+		form = VistaAsesorAgregado(self.__panel_master)
 		self.__vista_actual = form
 
 	def del_asesor(self):
 		self.limpiar()
-		form = DelAsesor(self.__panel_master)
+		form = VistaAsesorBorrado(self.__panel_master)
 		self.__vista_actual = form
 		
 	def add_soli(self):
 		self.limpiar()
-		form = AddSoli(self.__panel_master)
+		form = VistaSolicitudAgregada(self.__panel_master)
 		self.__vista_actual = form
 		
 	def baja_soli(self):
