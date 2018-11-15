@@ -57,7 +57,7 @@ class PanelPrincipal(Frame):
 		menu_soli = Menu(menubar, tearoff=0)
 		menu_soli.add_command(label="Agregar Solicitud", command=self.add_soli)
 		menu_soli.add_command(label="Eliminar solicitud", command=self)
-		menu_soli.add_command(label="Listar solicitudes", command=self)
+		menu_soli.add_command(label="Listar solicitudes", command=list_soli)
 		menu_soli.add_separator()
 		menu_soli.add_command(label="Dar de baja solicitud",
 			command=self)

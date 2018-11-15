@@ -78,7 +78,7 @@ def list_cliente():
 
 
 def list_asesor():
-	"""Genera una lista con los datos de los asesor"""
+	"""Genera una lista con los datos de los asesores"""
 	datos = ['------======DETALLE ASESORES======------']
 	bucle = 1
 	for asesor in bd.asesores:
@@ -94,6 +94,31 @@ def list_asesor():
 		datos.append("	 Sueldo: {}".format(asesor.sueldo))
 		datos.append("")
 		datos.append("")
+		bucle += 1
+	list_datos(datos)
+	
+def list_soli():
+	"""Genera una lista con los datos de las solicitudes"""
+	datos = ['------======DETALLE SOLICITUDES======------']
+	bucle = 1
+	ep = "				  "
+	ep1 = "									  "
+	for sol in bd.solicitudes:
+		datos.append("{}- Cliente: {}".format(bucle, sol.cliente))
+		datos.append("	 Asesor: {}".format(sol.asesor))
+		datos.append("	 Vehiculo: ")
+		datos.append("{}-Chapa: {}".format(ep, sol.vehiculo.chapa))
+		datos.append("{}-Marca: {}".format(ep, sol.vehiculo.marca))
+		datos.append("{}-Modelo: {}".format(ep, sol.vehiculo.modelo))
+		datos.append("{}-Repuestos:".format(ep))
+		if sol.repuestos:
+			for val in sol.repuestos:
+				datos.append("{}=Tipo: {}".format(ep1, val.tipo))
+				datos.append("{}=Marca: {}".format(ep1, val.marca))
+				datos.append("{}=Costo: {}".format(ep1, val.costo))
+				datos.append("")
+			datos.append("")
+
 		bucle += 1
 	list_datos(datos)
 

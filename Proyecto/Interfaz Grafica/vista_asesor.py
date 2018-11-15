@@ -88,7 +88,7 @@ class AddAsesor(PanedWindow):
 			self.sueldo_entry.grid(row=10, column=2)
 		return self.sueldo_entry
 
-	def val_emp(self, sue, ced, nom, ape, dre):
+	def val_asesor(self, sue, ced, nom, ape, dre):
 		val = False
 		if ((sue.isdigit() or sue == "") and ced.isdigit() and
 		nom != "" and ape != ""):
@@ -116,7 +116,7 @@ class AddAsesor(PanedWindow):
 			ape = self.get_apellido_entry().get()
 			dre = self.get_direccion_entry().get()
 
-			if (self.val_emp(sue, ced, nom, ape, dre) and
+			if (self.val_asesor(sue, ced, nom, ape, dre) and
 			self.val_cont(tel, mail)):
 				self.contacto = Contacto(tel, mail)
 				bd.asesores.append(Asesor(**{

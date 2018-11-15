@@ -37,23 +37,24 @@ class AddSoli(PanedWindow):
 		Label(self, text="Chapa*: ").grid(row=5, column=2)
 		Label(self, text="Marca*: ").grid(row=6, column=2)
 		Label(self, text="Modelo*: ").grid(row=7, column=2)
-		Label(self, text="Repuestos*: ").grid(row=8, column=1)
-		Label(self, text="Tipo*: ").grid(row=9, column=2)
-		Label(self, text="Marca*: ").grid(row=10, column=2)
-		Label(self, text="Costo*: ").grid(row=11, column=2)
-		Button(self, text="Add Repuesto", command=self.agregar_repuesto).grid(
-			row=12, column=2)
+		Label(self, text="Repuesto: ").grid(row=9, column=1)
+		Label(self, text="Tipo: ").grid(row=10, column=2)
+		Label(self, text="Marca: ").grid(row=11, column=2)
+		Label(self, text="Costo: ").grid(row=12, column=2)
+		#Button(self, text="Add Repuesto", command=self.agregar_repuesto).grid(
+			#row=13, column=2)
 		Button(self, text="GUARDAR", command=self.agregar_solicitud).grid(
-			row=13, column=1)
+			row=14, column=1)
 
 		self.get_cliente_entry()
 		self.get_asesor_entry()
+		self.get_chapa_entry()
+		self.get_marcaV_entry()
+		self.get_modelo_entry()		
 		self.get_tipo_entry()
 		self.get_marcaR_entry()
-		self.get_modelo_entry()
-		self.get_marcaV_entry()
 		self.get_costo_entry()
-		self.get_chapa_entry()
+		
 
 	def get_cliente_entry(self):
 		if not self.cliente_entry:
@@ -67,98 +68,110 @@ class AddSoli(PanedWindow):
 			self.asesor_entry.grid(row=3, column=2)
 		return self.asesor_entry
 
-	def get_tipo_entry(self):
-		if not self.tipo_entry:
-			self.tipo = StringVar()
-			self.tipo_entry = Radiobutton(self, text="Faro",
-				value="faro", variable=self.tipo)
-			self.tipo_entry.grid(row=5, column=2)
-			self.tipo_entry = Radiobutton(self, text="Neumatico",
-				value="neumatico", variable=self.tipo)
-			self.tipo_entry.grid(row=5, column=3)
-			self.tipo_entry = Radiobutton(self, text="Espejos",
-				value="espejos", variable=self.tipo)
-			self.tipo_entry.grid(row=5, column=4)
-			self.tipo_entry = Radiobutton(self, text="Otro",
-				value="otro", variable=self.tipo)
-			self.tipo_entry.grid(row=5, column=6)
-		return self.tipo
-
-	def get_marcaR_entry(self):
-		if not self.marcaR_entry:
-			self.marcaR_entry = Entry(master=self, width=20)
-			self.marcaR_entry.grid(row=6, column=2)
-		return self.marcaR_entry
-
-	def get_modelo_entry(self):
-		if not self.modelo_entry:
-			self.modelo_entry = Entry(master=self, width=20)
-			self.modelo_entry.grid(row=7, column=2)
-		return self.modelo_entry
+	def get_chapa_entry(self):
+		if not self.chapa_entry:
+			self.chapa_entry = Entry(master=self, width=20)
+			self.chapa_entry.grid(row=5, column=3)
+		return self.chapa_entry 
 
 	def get_marcaV_entry(self):
 		if not self.marcaV_entry:
 			self.marcaV_entry = Entry(master=self, width=20)
-			self.marcaV_entry.grid(row=6, column=2)
+			self.marcaV_entry.grid(row=6, column=3)
 		return self.marcaV_entry
 
-	def get_chapa_entry(self):
-		if not self.chapa_entry:
-			self.chapa_entry = Entry(master=self, width=20)
-			self.chapa_entry.grid(row=2, column=2)
-		return self.chapa_entry 
+	def get_modelo_entry(self):
+		if not self.modelo_entry:
+			self.modelo_entry = Entry(master=self, width=20)
+			self.modelo_entry.grid(row=7, column=3)
+		return self.modelo_entry
+		
+	def get_tipo_entry(self):
+		if not self.tipo_entry:
+			self.tipo_entry = Entry(master=self, width=20)
+			self.tipo_entry.grid(row=10, column=3)
+		return self.tipo_entry
+
+	def get_marcaR_entry(self):
+		if not self.marcaR_entry:
+			self.marcaR_entry = Entry(master=self, width=20)
+			self.marcaR_entry.grid(row=11, column=3)
+		return self.marcaR_entry
 
 	def get_costo_entry(self):
 		if not self.costo_entry:
 			self.costo_entry = Entry(master=self, width=20)
-			self.costo_entry.grid(row=10, column=2)
+			self.costo_entry.grid(row=12, column=3)
 		return self.costo_entry
 
-	def val_soli(self, c, e):
+	def validar_solicitud(self, cliente, asesor):
 		val = False
-		if c.isalpha() and e.isalpha():
+		if cliente.isdigit() and asesor.isdigit():
 			val = True
 		else:
-			messagebox.showinfo("", "Ingrese cliente y asesor")
+			messagebox.showinfo("", "Ingrese cedula del cliente y asesor")
 		return val
 
 	def agregar_solicitud(self):
 			# Anhade la solicitud a la bd
-			if self.repuestos:
-				try:
-					cli = self.get_cliente_entry().get()
-					asesor = self.get_asesor_entry().get()
-					if self.val_soli(cli, asesor):
-						solicitud = Solicitud(**{"fecha": datetime.now(),
-						"cliente": cli, "asesor": asesor})
-						solicitud.repuesto = self.repuestos
-						bd.solicitudes.append(solicitud)
-						#print("final de ingreso de datos")
-						messagebox.showinfo("Informacion", "Solicitud agregada")
-						self.destroy()
-				except Exception as e:
-					messagebox.showerror('Error', e)
-			else:
-				messagebox.showinfo("Informacion", "Debe ingresar repuestos")
+		try:
+			cli = self.get_cliente_entry().get()
+			asesor = self.get_asesor_entry().get()
+			mod = self.get_modelo_entry().get()
+			mar = self.get_marcaV_entry().get()
+			cha = self.get_chapa_entry().get()
+			tip = self.get_tipo_entry().get()
+			marcaR = self.get_marcaR_entry().get()
+			cos = self.get_costo_entry().get()
+			if self.validar_solicitud(cli, asesor):
+				if self.validar_vehiculo(mod, mar, cha):
+					vehiculo = Vehiculo(**{"modelo": mod, "marca": mar,"chapa": cha})
+				else:
+					messagebox.showinfo("Informacion", "Debe ingresar los datos del vehiculo correctamente")
+				if self.validar_repuesto(tip, marcaR, cos):
+					repuesto = Repuesto(**{"tipo": tip, "marca": marcaR,"costo_m": cos})
+				else:
+					messagebox.showinfo("Informacion", "Debe ingresar los datos de repuestos correctamente")
+				solicitud = Solicitud(**{"fecha": datetime.now(),
+				"cliente": cli, "asesor": asesor, "vehiculo": vehiculo, "repuestos": repuesto})
+				solicitud.repuestos = self.repuestos
+				bd.solicitudes.append(solicitud)
+				#print("final de ingreso de datos")
+				messagebox.showinfo("Informacion", "Solicitud agregada")
+				gestionador.guardar_datos()
+				self.destroy()
+		except Exception as e:
+			messagebox.showerror('Error', e)
 
 	def validar_repuesto(self, tip, mar, cos):
 		val = False
 		if tip != "" and mar != "" and (cos.isdigit() or cos == ""):
+			val = True
+		elif tip == "" and mar == "" and cos == "":
 			val = True
 		else:
 			messagebox.showinfo("", "Ingrese correctamente los datos del " +
 				"repuesto")
 		return val
 
-	def agregar_repuesto(self):
-			try:
-				tip = self.get_tipo_entry().get()
-				mar = self.get_marcaR_entry().get()
-				cos = self.get_costo_entry().get()
-				if self.validar_repuesto(tip, mar, cos,):
-					repuesto = Repuesto(**{"tipo": tip, "marca": mar,
-					"costo_m": cos})
-					self.repuestos.append(repuesto)
-					messagebox.showinfo("Informacion", "Repuesto agregado")
-			except Exception as e:
-				messagebox.showerror('Error', e)
+#	def agregar_repuesto(self):
+#			try:
+#				tip = self.get_tipo_entry().get()
+#				mar = self.get_marcaR_entry().get()
+#				cos = self.get_costo_entry().get()
+#				if self.validar_repuesto(tip, mar, cos):
+#					repuesto = Repuesto(**{"tipo": tip, "marca": mar,
+#					"costo_m": cos})
+#					self.repuestos.append(repuesto)
+#					messagebox.showinfo("Informacion", "Repuesto agregado")
+#			except Exception as e:
+#				messagebox.showerror('Error', e)
+	
+	def validar_vehiculo(self, mod, mar, cha):
+		val = False
+		if mar != "" and mod != "" and cha != "":
+			val = True
+		else:
+			messagebox.showinfo("", "Ingrese correctamente los datos del " +
+				"vehiculo")
+		return val
