@@ -178,7 +178,6 @@ class VistaSolicitudAgregada(PanedWindow):
 		
 class VistaSoliBaja(PanedWindow):
 	"""Panel que contien los campos para procesar una solicitud"""
-	costo_general = 100000
 	soli_entry = None
 
 	def __init__(self, panel_master):
@@ -210,6 +209,7 @@ class VistaSoliBaja(PanedWindow):
 			if(messagebox.askyesno("Procesar", "Desea atender la solicitud?")):
 				dato = bd.solicitudes.pop(pos - 1)
 				bd.solicitudes_baja.append(dato)
+				gestionador.guardar_datos()
 				messagebox.showinfo("Informacion", "Solicitud Atendida")
 				self.calc(dato)
 		except:
@@ -226,7 +226,8 @@ class VistaSoliBaja(PanedWindow):
 
 	def generador(self, dato):
 		""" Se retorna el costo final del mantenimiento """
+		costo_general = 100000
 		if dato.vehiculo:
 			if dato.repuestos:
-				costo_general+=dato.repuestos.costo
+				costo_general+=int(dato.repuestos.costo)
 		return costo_general
