@@ -1,82 +1,68 @@
-% Samuel Schiller LCIK C.I.: 4176002
+% Javier Heisecke C.I.: 4374941
 
 %%% =======================================================================
-%%% Hechos de las personas. En todos los casos Y es el C.I. (Identificador)
+%%% Hechos de los clientes. En todos los casos Y es la C.I. (Identificador)
 %%% =======================================================================
 
-estudiante('1234').
-estudiante('5555').
-
-% Hecho: es_nombre_de(X, Y) X es el nombre de Y
+% Hecho: es_nombre_de(X, Y) X es el nombre de Y es la C.I.
 es_nombre_de('Pedro', '4222111').
-es_nombre_de('Lucio', '4123123').
+es_nombre_de('Lucia', '5784596').
 
 % Hecho: es_apellido_de(X, Y) X es el apellido de Y
 es_apellido_de('Gonzales', '4222111').
-es_apellido_de('Pereira', '4123123').
+es_apellido_de('Gomez', '5784596').
 
 % Hecho: es_direccion_de(X, Y) X es el direccion de Y
 es_direccion_de('San Lorenzo...', '4222111').
-es_direccion_de('Luque...', '4123123').
+es_direccion_de('Asuncion...', '5784596').
 
 % Hecho: es_telefono_de(X, Y) X es el telefono de Y
-es_telefono_de('021 576576', '4222111').
-es_telefono_de('021 576576', '4123123').
-
-% Hecho: es_celular_de(X, Y) X es el celular de Y
-es_celular_de('0983 767676', '4222111').
-es_celular_de('0983 767676', '4123123').
+es_telefono_de('098457215', '4222111').
+es_telefono_de('098345849', '5784596').
 
 % Hecho: es_email_de(X, Y) X es el email de Y
-es_email_de('algo@gmail.com', '4222111').
-es_email_de('algo@gmail.com', '4123123').
+es_email_de('pedro@gmail.com', '4222111').
+es_email_de('lucia@gmail.com', '5784596').
 
 %%%% Hechos de los clientes. En todos los casos Y es el C.I. (Identificador)
 
 % Hecho: es_ruc_de(X, Y) X es el Ruc de Y
-es_ruc_de('111111111-1', '4222111').
+es_ruc_de('915512-1', '4222111').
 
-%%%% Hechos de los empleados. En todos los casos Y es el C.I. (Identificador)
-
-% Hecho: es_tecnico_de(X, Y) X es (si o no) tecnico de Y
-es_tecnico_de('si', '4123123').
+%%%% Hechos de los asesores. En todos los casos Y es el C.I. (Identificador)
 
 % Hecho: es_sueldo_de(X, Y) X es sueldo de Y
-es_sueldo_de('1900000', '4123123').
+es_sueldo_de('1900000', '5784596').
 
 
 %%% ==========================================================================
 %%% Hechos de los repuestos. En todos los casos Y es el Codigo (Identificador)
+%%% Las solicitudes se componen de repuestos que se crean en la propia solicitud
 %%% ==========================================================================
 
 repuesto('0001').
-repuesto('0002').
 
 % Hecho: es_tipo_de_repuesto(X, Y) X es el tipo de Y
-es_tipo_de_repuesto('disco', '0001').
-es_tipo_de_repuesto('memoria', '0002').
+es_tipo_de_repuesto('Faro', '0001').
 
 % Hecho: es_marca_de_repuesto(X, Y) X es la marca de Y
-es_marca_de_repuesto('Seagate', '0001').
-es_marca_de_repuesto('Samsung', '0002').
-
-% Hecho: es_modelo_de_repuesto(X, Y) X es el modelo de Y
-es_modelo_de_repuesto('HK-50', '0001').
-es_modelo_de_repuesto('DDR3', '0002').
+es_marca_de_repuesto('Rogers', '0001').
 
 % Hecho: es_costo_de_repuesto(X, Y) X es el costo de Y
 es_costo_de_repuesto('500000', '0001').
-es_costo_de_repuesto('250000', '0002').
 
-%%%% Hechos de los discos. En todos los casos Y es el Codigo (Identificador)
+%%% ==========================================================================
+%%% Hechos de los vehiculos. En todos los casos Y es la chapa (Identificadora)
+%%% Las solicitudes se componen de vehiculos que se crean en la propia solicitud
+%%% ==========================================================================
+	
+vehiculo('ABC-321').
 
-% Hecho: es_capacidad_de_repuesto(X, Y) X es la capacidad de Y
-es_capacidad_de_repuesto('1000', '0001').
+% Hecho: es_marca_de_vehiculo(X, Y) X es el marca de Y
+es_marca_de_vehiculo('Toyota', 'ABC-321').
 
-%%%% Hechos de los memorias. En todos los casos Y es el Codigo (Identificador)
-
-% Hecho: es_tamanho_de_repuesto(X, Y) X es la tamanho de Y
-es_tamanho_de_repuesto('8', '0002').
+% Hecho: es_modelo_de_vehiculo(X, Y) X es el modelo de Y
+es_modelo_de_vehiculo('Corola', 'ABC-321').
 
 
 %%% ==========================================================================
@@ -85,61 +71,29 @@ es_tamanho_de_repuesto('8', '0002').
 
 solicitud('1').
 
-% Hecho: es_fecha_de_solicitud(X, Y) X es el fecha de Y
+% Hecho: es_fecha_de_solicitud(X, Y) X es la fecha de Y
 es_fecha_de_solicitud('22/11/15', '1').
 
-% Hecho: es_cliente_de_solicitud(X, Y) X es el cliente de Y
+% Hecho: es_cliente_de_solicitud(X, Y) X es la cliente de Y
 es_cliente_de_solicitud('4222111', '1').
 
-% Hecho: es_empleado_de_solicitud(X, Y) X es el empleado de Y
-es_empleado_de_solicitud('4123123', '1').
+% Hecho: es_asesor_de_solicitud(X, Y) X es la asesor de Y
+es_asesor_de_solicitud('4123123', '1').
 
-% Hecho: es_equipo_de_solicitud(X, Y) X es el equipo de Y
-es_equipo_de_solicitud('321', '1').
-es_equipo_de_solicitud('322', '1').
-
+% Hecho: es_vehiculo_de_solicitud(X, Y) X es la vehiculo de Y
+es_vehiculo_de_solicitud('321', '1').
 
 %%% ----------------------------------------------------------------------------
-%%% Hechos de los equipos. En todos los casos Y es el Codigo (Identificador)
-%%% Las solicitudes se componen de equipos que se crean en la propia solicitud
-	
-equipo('321').
-equipo('322').
+%%% Un vehiculo se puede agregar a una solicitude
 
-% Hecho: es_tipo_de_equipo(X, Y) X es el tipo de Y
-es_tipo_de_equipo('notebook', '321').
-es_tipo_de_equipo('impresora', '322').
-
-% Hecho: es_marca_de_equipo(X, Y) X es el marca de Y
-es_marca_de_equipo('Acer', '321').
-es_marca_de_equipo('HP', '322').
-
-% Hecho: es_modelo_de_equipo(X, Y) X es el modelo de Y
-es_modelo_de_equipo('Aspire 15', '321').
-es_modelo_de_equipo('Deskjet', '322').
-
-% Hecho: es_detalle_de_equipo(X, Y) X es el detalle de Y
-es_detalle_de_equipo('15 pulgadas, color negro', '321').
-es_detalle_de_equipo('color blanco', '322').
-
-% Hecho: es_problema_de_equipo(X, Y) X es el problema de Y
-es_problema_de_equipo('No enciende', '321').
-es_problema_de_equipo('No estira hojas', '322').
-
-% Hecho: es_costo_de_equipo(X, Y) X es el costo de mantenimiento de Y
-es_costo_de_equipo('180000', '321').
-es_costo_de_equipo('150000', '322').
-
-% Hecho: es_estado_de_equipo(X, Y) X es el estado de mantenimiento de Y
-es_estado_de_equipo('pendiente', '321').
-es_estado_de_equipo('pendiente', '322').
+% Hecho: es_vehiculo_de_solicitud(X, Y) X es vehiculo de la solicitud de Y
+es_repuesto_de_vehiculo('ABC-321', '1').
 
 %%% ----------------------------------------------------------------------------
-%%% Los repuestos se pueden agregar a los equipos
+%%% Los repuestos se pueden agregar a las solicitudes
 
-% Hecho: es_repuesto_de_equipo(X, Y) X es repuesto del equipo de Y
-es_repuesto_de_equipo('0001', '321').
-es_repuesto_de_equipo('0002', '321').
+% Hecho: es_repuesto_de_solicitud(X, Y) X es repuesto de la solicitud de Y
+es_repuesto_de_solicitud('0001', '1').
 
 
 %%% ==========================================================================
@@ -148,64 +102,53 @@ es_repuesto_de_equipo('0002', '321').
 
 %%% ----------------------------------------------------------------------------
 %%% Regla: Son atributos del cliente con Cedula, los datos:
-%%% nombre, apellido, direccion, celular, telefono, celular, email y ruc
+%%% nombre, apellido, direccion, telefono, email y ruc
 
-son_datos_de_cliente(Cedula, Nombre, Apellido, Direccion, Cel, Tel, Mail, Ruc) :-
+	son_datos_de_cliente(Cedula, Nombre, Apellido, Direccion, Tel, Mail, Ruc) :-
 	es_nombre_de(Nombre, Cedula), es_apellido_de(Apellido, Cedula),
-	es_direccion_de(Direccion, Cedula), es_celular_de(Cel, Cedula),
-	es_telefono_de(Tel, Cedula), es_email_de(Mail, Cedula), es_ruc_de(Ruc, Cedula).
+	es_direccion_de(Direccion, Cedula), es_telefono_de(Tel, Cedula), 
+	es_email_de(Mail, Cedula), es_ruc_de(Ruc, Cedula).
 
 
 %%% ----------------------------------------------------------------------------
-%%% Regla: Son atributos del empleado con Cedula, los datos:
-%%% nombre, apellido, direccion, celular, telefono, celular, email, tecnico y sueldo
+%%% Regla: Son atributos del asesor con Cedula, los datos:
+%%% nombre, apellido, direccion, telefono, celular, email y sueldo
 
-son_datos_de_empleado(Cedula, Nombre, Apellido, Direccion, Cel, Tel, Mail, Tec, Sueldo) :-
+	son_datos_de_asesor(Cedula, Nombre, Apellido, Direccion, Cel, Tel, Mail, Tec, Sueldo) :-
 	es_nombre_de(Nombre, Cedula), es_apellido_de(Apellido, Cedula),
-	es_direccion_de(Direccion, Cedula), es_celular_de(Cel, Cedula),
-	es_telefono_de(Tel, Cedula), es_email_de(Mail, Cedula), 
-	es_tecnico_de(Tec, Cedula), es_sueldo_de(Sueldo, Cedula).
+	es_direccion_de(Direccion, Cedula), es_telefono_de(Tel, Cedula), 
+	es_email_de(Mail, Cedula), es_sueldo_de(Sueldo, Cedula).
 
 	
 %%% ----------------------------------------------------------------------------
 %%% Regla: Son atributos del repuesto con Codigo, los datos:
-%%% tipo, marca, modelo, costo y dato adicional (Solo para discos y memoria)
+%%% tipo, marca, y costo
 
-son_datos_de_repuesto(Codigo, Tipo, Marca, Modelo, Costo, Dato) :-
-	Tipo = 'disco', !, es_tipo_de_repuesto(Tipo, Codigo), es_marca_de_repuesto(Marca, Codigo),
-	es_modelo_de_repuesto(Modelo, Codigo), es_costo_de_repuesto(Costo, Codigo), 
-	es_capacidad_de_repuesto(Dato, Codigo).
+	son_datos_de_repuesto(Codigo, Tipo, Marca, Costo) :-
+	Tipo = 'Faro', !, es_tipo_de_repuesto(Tipo, Codigo), es_marca_de_repuesto(Marca, Codigo),
+	es_modelo_de_repuesto(Modelo, Codigo), es_costo_de_repuesto(Costo, Codigo).
 	
-son_datos_de_repuesto(Codigo, Tipo, Marca, Modelo, Costo, Dato) :-
-	Tipo = 'memoria', !, es_tipo_de_repuesto(Tipo, Codigo), es_marca_de_repuesto(Marca, Codigo),
-	es_modelo_de_repuesto(Modelo, Codigo), es_costo_de_repuesto(Costo, Codigo), 
-	es_tamanho_de_repuesto(Dato, Codigo).
+	son_datos_de_repuesto(Codigo, Tipo, Marca, Costo) :-
+	Tipo = 'Neumatico', !, es_tipo_de_repuesto(Tipo, Codigo), es_marca_de_repuesto(Marca, Codigo),
+	es_costo_de_repuesto(Costo, Codigo).
 
+%%% ----------------------------------------------------------------------------
+%%% Regla: Son atributos del vehiculo con Chapa, los datos:
+%%% marca y modelo
+
+	son_datos_de_vehiculo(Chapa, Marca, Modelo)) :-
+	es_marca_de_vehiculo(Marca, Chapa), es_modelo_de_vehiculo(Modelo, Chapa).
+
+%%% ----------------------------------------------------------------------------
 %%% ----------------------------------------------------------------------------
 %%% Regla: Son atributos de la solicitud con Codigo, los datos:
-%%% fecha, cliente, empleado, equipo
+%%% fecha, cliente, asesor, vehiculo, repuesto
 
-son_datos_de_solicitud(Codigo, Fecha, Cliente, Empleado, Equipo) :-
+	son_datos_de_solicitud(Codigo, Fecha, Cliente, Asesor, Vehiculo) :-
 	es_fecha_de_solicitud(Fecha, Codigo), es_cliente_de_solicitud(Cliente, Codigo), 
-	es_empleado_de_solicitud(Empleado, Codigo), es_equipo_de_solicitud(Equipo, Codigo).
+	es_asesor_de_solicitud(Asesor, Codigo), es_vehiculo_de_solicitud(Vehiculo, Codigo),
+	es_repuesto_de_solicitud.(Repuesto, Codigo).
 
-%%% ----------------------------------------------------------------------------
-%%% Regla: Son atributos de la equipo con Codigo, los datos:
-%%% tipo, marca, modelo, detalle, problema, costo y estado
-
-son_datos_de_equipo(Codigo, Tipo, Marca, Modelo, Detalle, Problema, Costo, Estado) :-
-	es_tipo_de_equipo(Tipo, Codigo), es_marca_de_equipo(Marca, Codigo), 
-	es_modelo_de_equipo(Modelo, Codigo), es_detalle_de_equipo(Detalle, Codigo), 
-	es_problema_de_equipo(Problema, Codigo), es_costo_de_equipo(Costo, Codigo), 
-	es_estado_de_equipo(Estado, Codigo).
-
-
-%%% ----------------------------------------------------------------------------
-%%% ----------------------------------------------------------------------------
-
-% Regla: Saber si un repuesto se encuentra en la solicitud (en sus equipos)
-repuesto_en_solicitud(Repuesto, Solicitud) :- es_repuesto_de_equipo(Repuesto, Equipo),
-	es_equipo_de_solicitud(Equipo, Solicitud).
 
 
 
