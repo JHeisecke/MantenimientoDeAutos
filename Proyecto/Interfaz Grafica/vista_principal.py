@@ -27,6 +27,7 @@ class PanelPrincipal(Frame):
 		self.pack()
 
 	def inicializar(self):
+		"""Inicializamos la ventana con los menus y las opciones dentro de ellos"""
 		self.__panel_master.geometry(p_sal_pri)
 		self.__panel_master.title("MENU PRINCIPAL")
 		self.__panel_master.protocol("WM_DELETE_WINDOW", "onexit")
@@ -74,7 +75,6 @@ class PanelPrincipal(Frame):
 
 	def salir(self):
 		if(messagebox.askyesno("Salir", "Desea terminar la ejecucion?")):
-			#self.quit()
 			gestionador.guardar_datos()
 			exit()
 
@@ -89,37 +89,42 @@ class PanelPrincipal(Frame):
 # Funciones que llaman los distintos frames para modificar los datos
 
 	def add_cliente(self):
+		"""Llamamos al frame para agregar clientes"""
 		self.limpiar()
 		form = VistaClienteAgregado(self.__panel_master)
 		self.__vista_actual = form
 
 	def del_cliente(self):
+		"""Llamamos al frame para eliminar clientes"""
 		self.limpiar()
 		form = VistaClienteBorrado(self.__panel_master)
 		self.__vista_actual = form
 
 	def add_asesor(self):
+		"""Llamamos al frame para agregar asesores"""
 		self.limpiar()
 		form = VistaAsesorAgregado(self.__panel_master)
 		self.__vista_actual = form
 
 	def del_asesor(self):
+		"""Llamamos al frame para eliminar asesores"""
 		self.limpiar()
 		form = VistaAsesorBorrado(self.__panel_master)
 		self.__vista_actual = form
 		
 	def add_soli(self):
+		"""Llamamos al frame para agregar solicitudes"""
 		self.limpiar()
 		form = VistaSolicitudAgregada(self.__panel_master)
 		self.__vista_actual = form
 		
 	def baja_soli(self):
+		"""Llamamos al frame para dar de baja solicitudes"""
 		self.limpiar()
 		form = VistaSoliBaja(self.__panel_master)
 		self.__vista_actual = form
 
 #____________________________CARGAR__DATOS_____________________________________
-#Script que se ejecuta para cargar algunos datos
 	def script_cargar_datos(self):
 		"""Funcion que sirve para cargar algunos datos en el sistema"""
 		gestionador.cargar_datos()

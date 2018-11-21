@@ -26,6 +26,7 @@ def list_datos(datos):
 	Label(ventana, text="Detalle de los datos", ).pack()
 			
 	def colocar_scrollbar(listbox, scrollbar):
+		"""Agregamos un scrollbar a la ventana del listado"""
 		scrollbar.config(command=listbox.yview)
 		listbox.config(yscrollcommand=scrollbar.set)
 		scrollbar.pack(side=RIGHT, fill=Y)

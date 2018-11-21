@@ -24,7 +24,8 @@ class VistaClienteAgregado(PanedWindow):
 		self.inicializar()
 		self.pack()
 
-	def inicializar(self):
+	def inicializar(self):		
+		"""Inicializamos la ventana para creacion de clientes con los respectivos inputs"""
 		Label(self, text="Ingrese datos de la solicitud").grid(row=1, column=2)
 		Label(self, text="Cedula*: ").grid(row=2, column=1)
 		Label(self, text="Nombre*: ").grid(row=3, column=1)
@@ -34,7 +35,7 @@ class VistaClienteAgregado(PanedWindow):
 		Label(self, text="tel.: ").grid(row=6, column=2)
 		Label(self, text="email: ").grid(row=8, column=2)
 		Label(self, text="Ruc: ").grid(row=9, column=1)
-		Button(self, text="GUARDAR", command=self.a_cli).grid(row=10, column=3)
+		Button(self, text="GUARDAR", command=self.agregar_cliente).grid(row=10, column=3)
 
 		self.get_cedula_entry()
 		self.get_nombre_entry()
@@ -87,6 +88,7 @@ class VistaClienteAgregado(PanedWindow):
 		return self.ruc_entry
 
 	def val_cli(self, ced, nom, ape, dre):
+		"""Valida que los datos del cliente sean correctos"""
 		val = False
 		if ced.isdigit() and nom != "" and ape != "":
 			val = True
@@ -96,14 +98,16 @@ class VistaClienteAgregado(PanedWindow):
 		return val
 
 	def val_cont(self, tel, mail):
+		"""Valida que el contacto haya sido correcto"""
 		val = False
 		if tel != "" or mail != "":
 			val = True
 		else:
-			messagebox.showinfo("", "Ingrese por lo menos 1 contacto")
+			messagebox.showinfo("", "Ingrese por lo menos un contacto")
 		return val
 
-	def a_cli(self):
+	def agregar_cliente(self):
+		"""Agregamos al cliente a base de datos"""
 		try:
 			tel = self.get_tel_entry().get()
 			mail = self.get_email_entry().get()
@@ -136,6 +140,7 @@ class VistaClienteBorrado(PanedWindow):
 		self.pack()
 
 	def inicializar(self):
+		"""Inicializamos la ventana para borrado de datos de un cliente"""	
 		Label(self, text="Ingrese datos requeridos", ).grid(row=1, column=2)
 		Label(self, text="Ingrese numero de cliente*: ").grid(row=2, column=1)
 		Button(self, text="Eliminar", command=self.eliminar).grid(
@@ -150,11 +155,12 @@ class VistaClienteBorrado(PanedWindow):
 		return self.soli_entry
 
 	def eliminar(self):
-			try:
-				pos = int(self.get_soli_entry().get())
-				if(messagebox.askyesno("Eliminar", "Eliminar cliente?")):
-					bd.clientes.pop(pos - 1)
-					messagebox.showinfo("Eliminado", "Cliente eliminado")
-					self.destroy()
-			except:
-				messagebox.showerror("Infor", "No existe cliente")
+		"""Se borra al cliente de base de datos"""
+		try:
+			pos = int(self.get_soli_entry().get())
+			if(messagebox.askyesno("Eliminar", "Eliminar cliente?")):
+				bd.clientes.pop(pos - 1)
+				messagebox.showinfo("Eliminado", "Cliente eliminado")
+				self.destroy()
+		except:
+			messagebox.showerror("Infor", "No existe cliente")

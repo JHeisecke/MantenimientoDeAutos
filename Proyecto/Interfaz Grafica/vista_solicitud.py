@@ -28,6 +28,7 @@ class VistaSolicitudAgregada(PanedWindow):
 		self.pack()
 
 	def inicializar(self):
+		"""Inicializamos la ventana de creacion de solicitudes con los respectivos inputs"""
 		self.repuestos = []
 		Label(self, text="Ingrese datos de la solicitud", ).grid(
 			row=1, column=2)
@@ -103,6 +104,7 @@ class VistaSolicitudAgregada(PanedWindow):
 		return self.costo_entry
 
 	def validar_solicitud(self, cliente, asesor):
+		"""Validamos que la solicitud ingresada sea correcta"""
 		val = False
 		if cliente.isdigit() and asesor.isdigit():
 			val = True
@@ -140,6 +142,7 @@ class VistaSolicitudAgregada(PanedWindow):
 			messagebox.showerror('Error', e)
 
 	def validar_repuesto(self, tip, mar, cos):
+		"""Validamos que el repuesto sea correcto"""
 		val = False
 		if tip != "" and mar != "" and (cos.isdigit() or cos == ""):
 			val = True
@@ -151,6 +154,7 @@ class VistaSolicitudAgregada(PanedWindow):
 		return val
 	
 	def validar_vehiculo(self, mod, mar, cha):
+		"""Validamos que el vehiculo ingresado sea correcto"""
 		val = False
 		if mar != "" and mod != "" and cha != "":
 			val = True

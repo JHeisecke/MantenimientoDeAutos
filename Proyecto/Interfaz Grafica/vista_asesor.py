@@ -26,6 +26,7 @@ class VistaAsesorAgregado(PanedWindow):
 		self.pack()
 
 	def inicializar(self):
+		"""Inicializamos la ventana para creacion de asesores con los respectivos inputs"""
 		Label(self, text="Ingrese datos de la solicitud", ).grid(
 			row=1, column=2)
 		Label(self, text="Cedula*: ").grid(row=2, column=1)
@@ -36,7 +37,7 @@ class VistaAsesorAgregado(PanedWindow):
 		Label(self, text="tel.: ").grid(row=6, column=2)
 		Label(self, text="email: ").grid(row=8, column=2)
 		Label(self, text="Sueldo: ").grid(row=10, column=1)
-		Button(self, text="GUARDAR", command=self.a_emp).grid(row=11, column=3)
+		Button(self, text="GUARDAR", command=self.agregar_asesor).grid(row=11, column=3)
 
 		self.get_cedula_entry()
 		self.get_nombre_entry()
@@ -89,6 +90,7 @@ class VistaAsesorAgregado(PanedWindow):
 		return self.sueldo_entry
 
 	def val_asesor(self, sue, ced, nom, ape, dre):
+		"""Validamos que los datos del asesor hayan sido correctos"""
 		val = False
 		if ((sue.isdigit() or sue == "") and ced.isdigit() and
 		nom != "" and ape != ""):
@@ -99,14 +101,16 @@ class VistaAsesorAgregado(PanedWindow):
 		return val
 
 	def val_cont(self, tel, mail):
+		"""Valida que el contacto haya sido correcto"""
 		val = False
 		if tel != "" or mail != "":
 			val = True
 		else:
-			messagebox.showinfo("", "Ingrese por lo menos 1 contacto")
+			messagebox.showinfo("", "Ingrese por lo menos un contacto")
 		return val
 
-	def a_emp(self):
+	def agregar_asesor(self):
+		"""Agregamos al asesor a base de datos"""
 		try:
 			tel = self.get_tel_entry().get()
 			mail = self.get_email_entry().get()
@@ -142,6 +146,7 @@ class VistaAsesorBorrado(PanedWindow):
 		self.pack()
 
 	def inicializar(self):
+		"""Inicializamos la ventana para borrado de datos de un asesor"""
 		Label(self, text="Ingrese datos requeridos", ).grid(row=1, column=2)
 		Label(self, text="Ingrese numero de Asesor*: ").grid(row=2, column=1)
 		Button(self, text="Eliminar", command=self.eliminar).grid(
@@ -156,6 +161,7 @@ class VistaAsesorBorrado(PanedWindow):
 		return self.soli_entry
 
 	def eliminar(self):
+		"""Se borra al asesor de base de datos"""
 		try:
 			pos = int(self.get_soli_entry().get())
 			if(messagebox.askyesno("Eliminar", "Eliminar asesor?")):
