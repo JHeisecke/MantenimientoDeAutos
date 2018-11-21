@@ -1,8 +1,14 @@
-% Javier Heisecke C.I.: 4374941
+
 
 %%% =======================================================================
-%%% Hechos de los clientes. En todos los casos Y es la C.I. (Identificador)
+%%% Hechos de las personas. En todos los casos Y es la C.I. (Identificador)
 %%% =======================================================================
+
+cliente('100').
+cliente('4222111').
+asesor('5784596').
+asesor('1').
+
 
 % Hecho: es_nombre_de(X, Y) X es el nombre de Y es la C.I.
 es_nombre_de('Pedro', '4222111').
@@ -84,7 +90,7 @@ es_asesor_de_solicitud('4123123', '1').
 es_vehiculo_de_solicitud('321', '1').
 
 %%% ----------------------------------------------------------------------------
-%%% Un vehiculo se puede agregar a una solicitude
+%%% Los vehiculos se pueden agregar a las solicitudes
 
 % Hecho: es_vehiculo_de_solicitud(X, Y) X es vehiculo de la solicitud de Y
 es_repuesto_de_vehiculo('ABC-321', '1').
@@ -101,63 +107,59 @@ es_repuesto_de_solicitud('0001', '1').
 %%% ==========================================================================
 
 %%% ----------------------------------------------------------------------------
-%%% Regla: Son atributos del cliente con Cedula, los datos:
-%%% nombre, apellido, direccion, telefono, email y ruc
+%%% Regla: Son atributos del cliente con Cedula si
+%%% nombre, apellido, direccion, telefono, email y ruc pertenecen a la Cedula
+%%% y si Cedula es cliente
 
 	son_datos_de_cliente(Cedula, Nombre, Apellido, Direccion, Tel, Mail, Ruc) :-
+	cliente(Cedula),
 	es_nombre_de(Nombre, Cedula), es_apellido_de(Apellido, Cedula),
 	es_direccion_de(Direccion, Cedula), es_telefono_de(Tel, Cedula), 
 	es_email_de(Mail, Cedula), es_ruc_de(Ruc, Cedula).
 
 
 %%% ----------------------------------------------------------------------------
-%%% Regla: Son atributos del asesor con Cedula, los datos:
-%%% nombre, apellido, direccion, telefono, celular, email y sueldo
+%%% Regla: Son atributos del asesor con Cedula si:
+%%% nombre, apellido, direccion, telefono, celular, email y sueldo pertenecen a la Cedula
+%%% y si Cedula es asesor
 
-	son_datos_de_asesor(Cedula, Nombre, Apellido, Direccion, Cel, Tel, Mail, Tec, Sueldo) :-
+	son_datos_de_asesor(Cedula, Nombre, Apellido, Direccion, Tel, Mail, Sueldo) :-
+	asesor(Cedula),
 	es_nombre_de(Nombre, Cedula), es_apellido_de(Apellido, Cedula),
 	es_direccion_de(Direccion, Cedula), es_telefono_de(Tel, Cedula), 
 	es_email_de(Mail, Cedula), es_sueldo_de(Sueldo, Cedula).
 
 	
 %%% ----------------------------------------------------------------------------
-%%% Regla: Son atributos del repuesto con Codigo, los datos:
-%%% tipo, marca, y costo
+%%% Regla: Son atributos del repuesto con Codigo si:
+%%% tipo, marca, y costo pertenecen al Codigo
 
 	son_datos_de_repuesto(Codigo, Tipo, Marca, Costo) :-
-	Tipo = 'Faro', !, es_tipo_de_repuesto(Tipo, Codigo), es_marca_de_repuesto(Marca, Codigo),
-	es_modelo_de_repuesto(Modelo, Codigo), es_costo_de_repuesto(Costo, Codigo).
+	es_tipo_de_repuesto(Tipo, Codigo), es_marca_de_repuesto(Marca, Codigo),
+	es_costo_de_repuesto(Costo, Codigo).
 	
 	son_datos_de_repuesto(Codigo, Tipo, Marca, Costo) :-
-	Tipo = 'Neumatico', !, es_tipo_de_repuesto(Tipo, Codigo), es_marca_de_repuesto(Marca, Codigo),
+	es_tipo_de_repuesto(Tipo, Codigo), es_marca_de_repuesto(Marca, Codigo),
 	es_costo_de_repuesto(Costo, Codigo).
 
 %%% ----------------------------------------------------------------------------
-%%% Regla: Son atributos del vehiculo con Chapa, los datos:
-%%% marca y modelo
+%%% Regla: Son atributos del vehiculo con Chapa si:
+%%% marca y modelo pertenecen a la chapa
 
-	son_datos_de_vehiculo(Chapa, Marca, Modelo)) :-
+	son_datos_de_vehiculo(Chapa, Marca, Modelo) :-
 	es_marca_de_vehiculo(Marca, Chapa), es_modelo_de_vehiculo(Modelo, Chapa).
 
 %%% ----------------------------------------------------------------------------
 %%% ----------------------------------------------------------------------------
-%%% Regla: Son atributos de la solicitud con Codigo, los datos:
-%%% fecha, cliente, asesor, vehiculo, repuesto
+%%% Regla: Son atributos de la solicitud con Codigo si:
+%%% fecha, cliente, asesor, vehiculo y repuesto pertencen a la solicitud
 
-	son_datos_de_solicitud(Codigo, Fecha, Cliente, Asesor, Vehiculo) :-
-	es_fecha_de_solicitud(Fecha, Codigo), es_cliente_de_solicitud(Cliente, Codigo), 
-	es_asesor_de_solicitud(Asesor, Codigo), es_vehiculo_de_solicitud(Vehiculo, Codigo),
-	es_repuesto_de_solicitud.(Repuesto, Codigo).
-
-
-
-
-
-
-
-
-
-
-
-
-
+	son_datos_de_solicitud(Codigo, Fecha, Cliente, Asesor, Vehiculo, Repuesto) :-
+	es_fecha_de_solicitud(Fecha, Codigo), 
+	es_cliente_de_solicitud(Cliente, Codigo), 
+	es_asesor_de_solicitud(Asesor, Codigo), 
+	es_repuesto_de_solicitud(Repuesto, Codigo), 
+	es_vehiculo_de_solicitud(Vehiculo, Codigo).
+	
+	
+% Javier Heisecke
