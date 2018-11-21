@@ -1,0 +1,4 @@
+Para ejecutar el programa hay que dirigirse donde se encuentre el archivo app.py desde una consola 
+e introducir el siguiente comando: python apptk.py
+
+Es importante que antes de ejecutar hay que instalar shelve

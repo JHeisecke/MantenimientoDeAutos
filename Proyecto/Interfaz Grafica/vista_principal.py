@@ -10,8 +10,6 @@ import gestionador
 
 bgC = "grey"
 p_sal_pri = "700x400+150+100"
-p_sal_sec = "500x300+250+180"
-
 #______________________________________________________________________________
 #________________________________Panel Principal_______________________________
 
@@ -85,7 +83,7 @@ class PanelPrincipal(Frame):
 			self.__vista_actual.destroy()
 
 	def info(self):
-		messagebox.showinfo("Informacion","\n Info Temporal \n")
+		messagebox.showinfo("Informacion","\n Desarrollado por Javier Heisecke \n")
 #______________________________________________________________________________
 #______________________________________________________________________________
 # Funciones que llaman los distintos frames para modificar los datos

@@ -41,8 +41,6 @@ class VistaSolicitudAgregada(PanedWindow):
 		Label(self, text="Tipo: ").grid(row=10, column=2)
 		Label(self, text="Marca: ").grid(row=11, column=2)
 		Label(self, text="Costo: ").grid(row=12, column=2)
-		#Button(self, text="Add Repuesto", command=self.agregar_repuesto).grid(
-			#row=13, column=2)
 		Button(self, text="GUARDAR", command=self.agregar_solicitud).grid(
 			row=14, column=1)
 
@@ -113,7 +111,7 @@ class VistaSolicitudAgregada(PanedWindow):
 		return val
 
 	def agregar_solicitud(self):
-			# Anhade la solicitud a la bd
+		"""Funcion para agregar una solicitud a base de datos"""
 		try:
 			cli = self.get_cliente_entry().get()
 			asesor = self.get_asesor_entry().get()
@@ -134,9 +132,7 @@ class VistaSolicitudAgregada(PanedWindow):
 					messagebox.showinfo("Informacion", "Debe ingresar los datos de repuestos correctamente")
 				solicitud = Solicitud(**{"fecha": datetime.now(),
 				"cliente": cli, "asesor": asesor, "vehiculo": vehiculo, "repuestos": repuesto})
-				#solicitud.repuestos = self.repuestos
 				bd.solicitudes.append(solicitud)
-				#print("final de ingreso de datos")
 				messagebox.showinfo("Informacion", "Solicitud agregada")
 				gestionador.guardar_datos()
 				self.destroy()
@@ -153,19 +149,6 @@ class VistaSolicitudAgregada(PanedWindow):
 			messagebox.showinfo("", "Ingrese correctamente los datos del " +
 				"repuesto")
 		return val
-
-#	def agregar_repuesto(self):
-#			try:
-#				tip = self.get_tipo_entry().get()
-#				mar = self.get_marcaR_entry().get()
-#				cos = self.get_costo_entry().get()
-#				if self.validar_repuesto(tip, mar, cos):
-#					repuesto = Repuesto(**{"tipo": tip, "marca": mar,
-#					"costo_m": cos})
-#					self.repuestos.append(repuesto)
-#					messagebox.showinfo("Informacion", "Repuesto agregado")
-#			except Exception as e:
-#				messagebox.showerror('Error', e)
 	
 	def validar_vehiculo(self, mod, mar, cha):
 		val = False
