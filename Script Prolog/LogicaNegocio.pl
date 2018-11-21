@@ -19,8 +19,8 @@ es_apellido_de('Gonzales', '4222111').
 es_apellido_de('Gomez', '5784596').
 
 % Hecho: es_direccion_de(X, Y) X es el direccion de Y
-es_direccion_de('San Lorenzo...', '4222111').
-es_direccion_de('Asuncion...', '5784596').
+es_direccion_de('San Lorenzo', '4222111').
+es_direccion_de('Asuncion', '5784596').
 
 % Hecho: es_telefono_de(X, Y) X es el telefono de Y
 es_telefono_de('098457215', '4222111').
@@ -85,9 +85,6 @@ es_cliente_de_solicitud('4222111', '1').
 
 % Hecho: es_asesor_de_solicitud(X, Y) X es la asesor de Y
 es_asesor_de_solicitud('4123123', '1').
-
-% Hecho: es_vehiculo_de_solicitud(X, Y) X es la vehiculo de Y
-es_vehiculo_de_solicitud('321', '1').
 
 %%% ----------------------------------------------------------------------------
 %%% Los vehiculos se pueden agregar a las solicitudes
