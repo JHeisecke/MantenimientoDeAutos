@@ -10,7 +10,7 @@ import gestionador
 from functools import reduce
 
 class VistaSolicitudAgregada(PanedWindow):
-	"Panel que contiene los campos para introducir los datos de la solicitud"
+	"""Panel que contiene los campos para introducir los datos de la solicitud"""
 
 	cliente_entry = None
 	asesor_entry = None
@@ -29,7 +29,6 @@ class VistaSolicitudAgregada(PanedWindow):
 
 	def inicializar(self):
 		"""Inicializamos la ventana de creacion de solicitudes con los respectivos inputs"""
-		self.repuestos = []
 		Label(self, text="Ingrese datos de la solicitud", ).grid(
 			row=1, column=2)
 		Label(self, text="Cliente*: ").grid(row=2, column=1)

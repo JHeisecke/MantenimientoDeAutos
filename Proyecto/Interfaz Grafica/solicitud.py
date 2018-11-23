@@ -24,19 +24,3 @@ class Solicitud(Boleta):
         self.asesor = asesor
         self.vehiculo=vehiculo
         self.repuestos= repuestos
-
-    def promp_init():
-        """Se crea un diccionario con los indices y valores necesarios para
-        instanciar al objeto"""
-        fecha = datetime.now()
-        print("La fecha de la solicitud es la actual")
-        cliente=input_entero("Ingrese la cedula del cliente*")
-        asesor=input_entero("Ingrese la cedula del asesor*")
-        datosV = Vehiculo.prompt_init()
-        vehiculo= Vehiculo(**datosV)    
-        return dict({
-            "fecha": fecha,
-            "cliente": cliente,
-            "asesor": asesor,
-            "vehiculo": vehiculo
-        })

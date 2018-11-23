@@ -18,14 +18,6 @@ class Persona(metaclass=ABCMeta):
         self.direccion = direccion
         self.contactos = contacto
 
-    def prompt_init():
-        """Se crea un diccionario con los claves y valores necesarios para
-        instanciar al objeto"""
-        return dict(cedula=input_entero('Ingrese cedula'),
-            nombre=input_string('Ingrese nombre').title(),
-            apellido=input_string('Ingrese apellido').title(),
-            direccion=input_string('Ingrese direccion'))
-    prompt_init = staticmethod(prompt_init)
 
 
 
@@ -38,20 +30,6 @@ class Cliente(Persona):
         super().__init__(**kwargs)
         self.ruc = ruc
 
-    def prompt_init():
-        """Se crea un diccionario con las claves y valores necesarios para
-        instanciar al objeto"""
-        persona = Persona.prompt_init()
-        ruc = input_string_norequerido("RUC")
-        datos = Contacto.prompt_init()
-        contacto = Contacto(**datos)
-        persona.update({
-            "ruc": ruc,
-            "contacto": contacto})
-
-        return persona
-    prompt_init = staticmethod(prompt_init)
-
 #________________________________asesor______________________________________
 
 
@@ -63,19 +41,4 @@ class Asesor(Persona):
         self.fecha_ini = fecha_ini
         self.sueldo = sueldo
 
-
-    def prompt_init():
-        """Se crea un diccionario con las claves y valores necesarios para
-        instanciar al objeto"""
-        persona = Persona.prompt_init()
-        fecha_ini = datetime.now()
-        sueldo = input_entero("Ingrese sueldo")
-        datos = Contacto.prompt_init()
-        contacto = Contacto(**datos)
-        persona.update({
-            "fecha_ini": fecha_ini,
-            "sueldo": sueldo,
-            "contacto": contacto})
-        return persona
-    prompt_init = staticmethod(prompt_init)
 #______________________________________________________________________________

@@ -12,12 +12,4 @@ class Contacto():
         self.tel = tel
         self.email = email
 
-    def prompt_init():
-        """Se crea un diccionario con las claves y valores necesarios para
-        instanciar al objeto"""
-        return dict({
-            "tel": input_entero("Tel."),
-            "email": input_string_norequerido("Ingrese email")})
-    prompt_init = staticmethod(prompt_init)
-
 #_____________________________________________________________________________

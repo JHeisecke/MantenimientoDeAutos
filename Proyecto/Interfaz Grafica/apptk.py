@@ -1,6 +1,6 @@
 import tkinter as tk
-from vista_principal import PanelPrincipal
+from vista_principal import LocalDeMantenimiento
 
 root = tk.Tk()
-vista_principal = PanelPrincipal(root)
+vista_principal = LocalDeMantenimiento(root)
 root.mainloop()

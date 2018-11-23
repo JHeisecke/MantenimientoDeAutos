@@ -42,66 +42,64 @@ es_sueldo_de('1900000', '5784596').
 
 
 %%% ==========================================================================
-%%% Hechos de los repuestos. En todos los casos Y es el Codigo (Identificador)
-%%% Las solicitudes se componen de repuestos que se crean en la propia solicitud
+%%% Hechos de los repuestos. Y es el Codigo Repuesto
 %%% ==========================================================================
 
 repuesto('0001').
 
-% Hecho: es_tipo_de_repuesto(X, Y) X es el tipo de Y
+% Hecho: es_tipo_de_repuesto(X, Y) X es el tipo Y
 es_tipo_de_repuesto('Faro', '0001').
 
-% Hecho: es_marca_de_repuesto(X, Y) X es la marca de Y
+% Hecho: es_marca_de_repuesto(X, Y) X es la marca Y
 es_marca_de_repuesto('Rogers', '0001').
 
-% Hecho: es_costo_de_repuesto(X, Y) X es el costo de Y
+% Hecho: es_costo_de_repuesto(X, Y) X es el costo Y
 es_costo_de_repuesto('500000', '0001').
 
 %%% ==========================================================================
-%%% Hechos de los vehiculos. En todos los casos Y es la chapa (Identificadora)
-%%% Las solicitudes se componen de vehiculos que se crean en la propia solicitud
+%%% Hechos de los vehiculos. Y es la chapa
 %%% ==========================================================================
 	
 vehiculo('ABC-321').
 
-% Hecho: es_marca_de_vehiculo(X, Y) X es el marca de Y
+% Hecho: es_marca_de_vehiculo(X, Y) X es el marca Y
 es_marca_de_vehiculo('Toyota', 'ABC-321').
 
-% Hecho: es_modelo_de_vehiculo(X, Y) X es el modelo de Y
+% Hecho: es_modelo_de_vehiculo(X, Y) X es el modelo Y
 es_modelo_de_vehiculo('Corola', 'ABC-321').
 
 
 %%% ==========================================================================
-%%% Hechos de las solicitudes. En todos los casos Y es el Codigo (Identificador)
+%%% Hechos de las solicitudes. Y es el Codigo Solicitud
 %%% ==========================================================================
 
 solicitud('1').
 
-% Hecho: es_fecha_de_solicitud(X, Y) X es la fecha de Y
+% Hecho: es_fecha_de_solicitud(X, Y) X es la fecha Y
 es_fecha_de_solicitud('22/11/15', '1').
 
-% Hecho: es_cliente_de_solicitud(X, Y) X es la cliente de Y
+% Hecho: es_cliente_de_solicitud(X, Y) X es la cliente Y
 es_cliente_de_solicitud('4222111', '1').
 
-% Hecho: es_asesor_de_solicitud(X, Y) X es la asesor de Y
+% Hecho: es_asesor_de_solicitud(X, Y) X es la asesor Y
 es_asesor_de_solicitud('4123123', '1').
 
 %%% ----------------------------------------------------------------------------
 %%% Los vehiculos se pueden agregar a las solicitudes
 
-% Hecho: es_vehiculo_de_solicitud(X, Y) X es vehiculo de la solicitud de Y
-es_repuesto_de_vehiculo('ABC-321', '1').
+% Hecho: es_vehiculo_de_solicitud(X, Y) X es vehiculo de la solicitud Y
+es_vehiculo_de_solicitud('ABC-321', '1').
 
 %%% ----------------------------------------------------------------------------
 %%% Los repuestos se pueden agregar a las solicitudes
 
-% Hecho: es_repuesto_de_solicitud(X, Y) X es repuesto de la solicitud de Y
+% Hecho: es_repuesto_de_solicitud(X, Y) X es repuesto de la solicitud Y
 es_repuesto_de_solicitud('0001', '1').
 
-
-%%% ==========================================================================
-%%% ===============================REGLAS=====================================
-%%% ==========================================================================
+%%% ===========================================================================
+%%% ===========================================================================
+%%% ===========================================================================
+%%% ===========================================================================
 
 %%% ----------------------------------------------------------------------------
 %%% Regla: Son atributos del cliente con Cedula si
@@ -157,6 +155,14 @@ es_repuesto_de_solicitud('0001', '1').
 	es_asesor_de_solicitud(Asesor, Codigo), 
 	es_repuesto_de_solicitud(Repuesto, Codigo), 
 	es_vehiculo_de_solicitud(Vehiculo, Codigo).
-	
-	
+
+
 % Javier Heisecke
+	
+persona('852').
+tiene_ruc('852','852-1').
+
+es_cliente(Cliente, Ruc) :-
+persona(Cliente),
+tiene_ruc(Cliente,Ruc).	
+	

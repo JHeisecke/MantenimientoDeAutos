@@ -17,14 +17,4 @@ class Vehiculo(MedioDeTransporte):
         self.marca = marca
         self.modelo = modelo
         self.chapa = chapa
-
-    def prompt_init():
-        """Se crea un diccionario con los indices y valores necesarios para
-        instanciar al objeto"""
-        return dict({
-            "modelo": input_string("Marca del vehiculo"),
-            "chapa": input_string("Modelo"),
-            "marca": input_string("Chapa")
-        })
-    prompt_init = staticmethod(prompt_init)
 #______________________________________________________________________________

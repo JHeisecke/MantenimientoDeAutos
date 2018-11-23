@@ -14,7 +14,7 @@ p_sal_pri = "700x400+150+100"
 #________________________________Panel Principal_______________________________
 
 
-class PanelPrincipal(Frame):
+class LocalDeMantenimiento(Frame):
 	"""Panel principal que contiene el menu con las llamadas a las funciones
 	del programa"""
 	__vista_actual = None

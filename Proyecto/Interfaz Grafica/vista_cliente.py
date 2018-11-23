@@ -69,6 +69,7 @@ class VistaClienteAgregado(PanedWindow):
 			self.direccion_entry.grid(row=5, column=2)
 		return self.direccion_entry
 
+		
 	def get_tel_entry(self):
 		if not self.tel_entry:
 			self.tel_entry = Entry(master=self, width=20)
